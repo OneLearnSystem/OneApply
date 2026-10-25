@@ -1,0 +1,84 @@
+ONEHIGHER FAMILY — ONECOLLEGE / ONEAPPLY / ONEPATH
+Flat GitHub Pages release · 24 October 2026
+
+1. UPLOAD
+Extract this ZIP and upload ALL files together to your OneCollege repository root.
+There are no folders and no build step. Enable GitHub Pages from the root.
+Keep your real existing config.js settings if you have customised them.
+The included config uses your previously supplied public OneLearn project settings.
+Never add a service-role or secret key to config.js.
+
+Pages:
+index.html       OneCollege student and staff portal
+apply.html       OneApply course catalogue, applications and offer responses
+control.html     OneApply Control (institution administrators only)
+path.html        OnePath opportunities, goals and experience portfolio
+
+Use your existing institution slug on every link, for example:
+index.html?school=your-college
+apply.html?school=your-college
+control.html?school=your-college
+path.html?school=your-college
+The menu keeps the institution parameter when moving between services.
+All pages share one deployment. You do not need three separate repositories.
+
+2. DATABASE SETUP
+Use your EXISTING OneLearn Supabase project with the OneLearn platform installed.
+If needed, create/provision the institution through your existing OneLearn administration.
+Run in this order:
+1) HIGHER-EDUCATION-UPGRADE.sql — existing shared college database setup; skip if already installed.
+2) ONEAPPLY-ONEPATH-SETUP.sql — new admissions, opportunities and private learner plans.
+Both files are additive and rerunnable. No real/demo applicants are inserted by setup.
+The shared base schema supports higher education; this release does not add a OneUni portal.
+No SQL or changes were applied to your live project during preparation.
+
+3. AUTHENTICATION
+Use your existing OneLearn institution administrator account for OneApply Control.
+Ordinary applicants create an account with their email and a password of at least 12 characters.
+If email confirmation is enabled, they must confirm the email then sign in.
+Add the deployed site URL to your Supabase Auth site/redirect settings, including the
+apply.html page for password recovery. Confirm email and recovery delivery on your real host.
+Applicant accounts are not automatically staff or OneCollege student logins.
+OneCollege retains its established staff sign-in and student access-code system.
+
+4. OPEN APPLICATIONS
+In Control, create a cycle. Set College or University, opening/closing dates,
+maximum choices (1–10), applicant guidance, and Published.
+Add courses to that cycle with qualification, duration and entry requirements.
+Publish the courses. Published cycles only accept applications within their dates.
+Applicants choose courses, enter their details and qualifications, and write a statement.
+Drafts can be edited; submitted applications cannot be overwritten by applicants.
+Control can record Under review, Interview, Conditional offer, Offer or Unsuccessful.
+Enter the message/conditions the applicant should see. Updates appear IN THE PORTAL;
+automatic decision emails and UCAS submission are not included.
+
+5. ENROL INTO ONECOLLEGE
+An applicant accepts an offer. Admissions verifies conditions, then selects
+Create OneCollege student on that accepted College application.
+This creates a Year 1 student record, once only. Duplicate active email records are blocked.
+Assign their programme/classes and issue the existing student access details in OneCollege.
+University cycles accept applications, but University enrolment is intentionally not added.
+
+6. ONEPATH
+Administrators publish careers, placements, apprenticeships and events in Control.
+Students can save opportunities, add goals, record experience/hours/skills/reflections,
+and print their portfolio. Their personal plan is private to their account.
+Experience logs are self-recorded: no employer approval or verification is implied.
+External opportunity links use HTTPS; the service does not contact employers.
+
+7. DEMO
+Append ?demo=1 to any of the four pages to explore fictional data.
+The demo uses this browser only and does not contact the live database.
+OneApply, Control and OnePath share demo data so you can try the full offer journey.
+Demo enrolment changes application status only; it does not create a real student.
+The existing OneCollege demo has its own fictional student records.
+
+8. BRANDING AND CHECKS
+Uses the original OneCollege logo and matching OneHigher artwork.
+Icons are local SVG image files. Palette: red accents, charcoal type, warm grey and white.
+Verified: applicant submission, staff decisions, offer acceptance, enrolment review,
+College/University cycle selection, OnePath saving and experience persistence,
+OneCollege student/staff views, and a narrow-screen visual check.
+Database checks cover repeat installation, tenant isolation, anonymous access,
+non-admin denial, private applications/plans, stale edits and duplicate enrolment.
+Live authentication email delivery and your existing project configuration need your host check.
